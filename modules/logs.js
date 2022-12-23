@@ -6,7 +6,7 @@
  */
 
 /*      AUTHORISATION      */
-const { Logs } = require("../../../files/modules.js");
+const { Logs } = require("../files/modules.js");
 
 /*      IMPORTS      */
 const { EmbedBuilder } = require("discord.js");

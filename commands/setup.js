@@ -1,13 +1,14 @@
-const { data } = require("../../../commands/setup/setup");
-const { setupLogs } = require("../../../utils/enmapUtils");
+const { setupLogs } = require("../utils/enmapUtils");
 
-const slashCommand = data.addSubcommand((subcommand) =>
-subcommand
-    .setName("logs")
-    .setDescription(
-        "Définir/Supprimer le channel pour les logs. (Il ne peut n'y en avoir qu'un)"
+async function addSetupCommand(slashCommand) {
+    slashCommand.addSubcommand((subcommand) =>
+    subcommand
+        .setName("logs")
+        .setDescription(
+            "Définir/Supprimer le channel pour les logs. (Il ne peut n'y en avoir qu'un)"
+        )
     )
-)
+}
 
 /* ----------------------------------------------- */
 /* FUNCTIONS                                       */
@@ -17,7 +18,9 @@ subcommand
  * @param {CommandInteraction} interaction L'interaction généré par l'exécution de la commande.
  */
 async function execute(interaction) {
-    if (setupLogs.get(interaction.guild.id) === undefined) {
+    switch (interaction.options._subcommand) {
+        case "logs":
+        if (setupLogs.get(interaction.guild.id) === undefined) {
         setupLogs.set(interaction.guild.id, interaction.channel.id);
         await interaction.reply({
             content: `Logs ajouté au serveur dans <#${interaction.channel.id}> !`,
@@ -30,9 +33,11 @@ async function execute(interaction) {
             ephemeral: true,
         });
     }
+    break;
+    }
 }
 
 module.exports = {
-    data: slashCommand,
+    addSetupCommand,
     execute,
 };
