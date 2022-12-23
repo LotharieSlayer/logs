@@ -1,0 +1,2 @@
+# logs
+WTPBot Logs Plugin
