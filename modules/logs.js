@@ -139,7 +139,7 @@ async function banLog(guildBan, banned, client) {
 }
 
 async function userLog(member) {
-    const path = `${process.cwd()}/files/userEntries.log`;
+    const path = `../files/userEntries.log`;
 
     const memberLine = `${member.id} - ${new Date()} (${Date.now()})\n`;
     const startingFile =
