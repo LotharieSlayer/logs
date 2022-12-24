@@ -21,6 +21,8 @@ async function timeoutLog(oldMember, newMember, client) {
     if (Logs == false) return;
 
     const LOGS_ID = await getLogsSetupData(newMember.guild.id, "logs");
+    if (LOGS_ID == null) return;
+
     const logChannel = await client.channels.cache.find(
         (channel) => channel.id === LOGS_ID
     );
@@ -72,6 +74,8 @@ async function kickLog(member, client) {
     if (Logs == false) return;
 
     const LOGS_ID = await getLogsSetupData(member.guild.id, "logs");
+    if (LOGS_ID == null) return;
+
     const logChannel = await client.channels.cache.find(
         (channel) => channel.id === LOGS_ID
     );
@@ -94,6 +98,8 @@ async function kickLog(member, client) {
 async function banLog(guildBan, banned, client) {
     if (Logs == false) return;
     const LOGS_ID = await getLogsSetupData(guildBan.guild.id, "logs");
+    if (LOGS_ID == null) return;
+    
     const logChannel = await client.channels.cache.find(
         (channel) => channel.id === LOGS_ID
     );
