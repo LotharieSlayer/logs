@@ -116,7 +116,7 @@ async function banLog(guildBan, banned, client) {
             limit: 5,
             type: 22    //"MEMBER_BAN_ADD"
         });
-        let banFirst = auditLogs.entries.first();
+        let banFirst = await auditLogs.entries.first();
         banEmbed.setFooter({
             text: `Par ${banFirst.executor.username}`,
             iconURL: banFirst.executor.avatarURL()
