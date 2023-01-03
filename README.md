@@ -1,2 +1,2 @@
 # logs
-WTPBot Logs Plugin
+Logs plugin for WTPBot
