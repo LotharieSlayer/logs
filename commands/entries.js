@@ -26,7 +26,7 @@ const slashCommand = new SlashCommandBuilder()
 async function execute(interaction) {
 
     const logsFile = new AttachmentBuilder(
-        `../files/userEntries.log`
+        `${__dirname}/../files/userEntries.log`
     );
     await interaction.member.send({
         content: `Logs des entrées de membres du serveur ${interaction.guild.name} (${interaction.guildId}).`,
